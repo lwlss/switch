@@ -13,7 +13,7 @@ window.set_fullscreen(True)
 gl.glClearColor(*off_colour)
 window.clear()
 
-boat = pyglet.media.load("audio_tracks\\03 - O Superman.wav", streaming=False)
+boat = pyglet.media.load("audio_tracks\\Boat_Amie.wav", streaming=False)
 
 player = pyglet.media.Player()
 player.queue(boat)
