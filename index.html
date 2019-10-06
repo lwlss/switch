@@ -26,6 +26,9 @@
   
   document.addEventListener('mousedown', function(e){activate();});
   document.addEventListener('mouseup', function(e){deactivate();});
+  
+  document.addEventListener('touchstart', function(e){activate();});
+  document.addEventListener('touchend', function(e){deactivate();});
  </script>
  <style>
   body{
