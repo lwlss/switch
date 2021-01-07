@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+ <meta charset=utf-8>
+ <title>Switch controlled music & colour|AbleNet Blue2</title>
+ <meta name="description" content="Control music using AbleNet Blue2 bluetooth switch (mode 1: Space & Enter), keyboard, mouse or touch screen.  Hold button down to play music, release to pause.">
+ <script>
+ function activate(){
+  document.getElementById('theaudio').play();
+  document.body.style.backgroundColor = "#ff8300";
+ }
+ 
+ function deactivate(){
+  document.getElementById('theaudio').pause();
+  document.body.style.backgroundColor = "black";
+ }
+ 
+  document.addEventListener('keydown', function(e) {
+   if (e.key == ' '|e.key == 'Enter') {activate();}
+  });
+
+  document.addEventListener('keyup', function(e) {
+   if (e.key == ' '|e.key == 'Enter') {deactivate();}
+  });
+  
+  document.addEventListener('mousedown', function(e){activate();});
+  document.addEventListener('mouseup', function(e){deactivate();});
+  
+  document.addEventListener('touchstart', function(e){activate();});
+  document.addEventListener('touchend', function(e){deactivate();});
+ </script>
+ <style>
+  body{
+   background-color: black;
+  }
+ </style>
+ 
+</head>
+
+<body>
+ <audio controls loop id="theaudio" style="display:none">
+  <source src="../audio_tracks/RuidhleMoNigheanDonn_BrighdeChaimbeul.mp3" type="audio/mpeg">
+ </audio>
+</body>
+</html>
+
+
+
+
