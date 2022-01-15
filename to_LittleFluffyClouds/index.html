@@ -3,32 +3,80 @@
 
 <head>
  <meta charset=utf-8>
- <title>Switch controlled music & colour|AbleNet Blue2</title>
- <meta name="description" content="Control music using AbleNet Blue2 bluetooth switch (mode 1: Space & Enter), keyboard, mouse or touch screen.  Hold button down to play music, release to pause.">
+ <title>Switch controlled music & colour|AbleNet Hitch2</title>
+ <meta name="description" content="Control music using AbleNet Hitch2 switch (mode 3: Arrow Keys & Enter), keyboard, mouse or touch screen.  Hold button down to play music, release to pause.">
  <script>
- function activate(){
-  document.getElementById('theaudio').play();
+ function activate_enter(){
+  document.getElementById('fluffy').play();
   document.body.style.backgroundColor = "#65C102";
  }
  
- function deactivate(){
-  document.getElementById('theaudio').pause();
+ function deactivate_enter(){
+  document.getElementById('fluffy').pause();
+  document.body.style.backgroundColor = "black";
+ }
+ 
+  function activate_37(){
+  document.getElementById('turnip').play();
+  document.body.style.backgroundColor = "yellow";
+ }
+ 
+ function deactivate_37(){
+  document.getElementById('turnip').pause();
+  document.body.style.backgroundColor = "black";
+ }
+ 
+  function activate_38(){
+  document.getElementById('ageis').play();
+  document.body.style.backgroundColor = "#ff8300";
+ }
+ 
+ function deactivate_38(){
+  document.getElementById('ageis').pause();
+  document.body.style.backgroundColor = "black";
+ }
+ 
+  function activate_39(){
+  document.getElementById('super').play();
+  document.body.style.backgroundColor = "#FF1493";
+ }
+ 
+ function deactivate_39(){
+  document.getElementById('super').pause();
+  document.body.style.backgroundColor = "black";
+ }
+ 
+ function activate_40(){
+  document.getElementById('ruidh').play();
+  document.body.style.backgroundColor = "#7934FA";
+ }
+ 
+ function deactivate_40(){
+  document.getElementById('ruidh').pause();
   document.body.style.backgroundColor = "black";
  }
  
   document.addEventListener('keydown', function(e) {
-   if (e.key == ' '|e.key == 'Enter') {activate();}
+   if (e.key == ' '|e.key == 'Enter'){activate_enter();}
+   if (e.keyCode == 37){activate_37();}
+   if (e.keyCode == 38){activate_38();}
+   if (e.keyCode == 39){activate_39();}
+   if (e.keyCode == 40){activate_40();}
   });
 
   document.addEventListener('keyup', function(e) {
-   if (e.key == ' '|e.key == 'Enter') {deactivate();}
+   if (e.key == ' '|e.key == 'Enter'){deactivate_enter();}
+   if (e.keyCode == 37){deactivate_37();}
+   if (e.keyCode == 38){deactivate_38();}
+   if (e.keyCode == 39){deactivate_39();}
+   if (e.keyCode == 40){deactivate_40();}
   });
   
-  document.addEventListener('mousedown', function(e){activate();});
-  document.addEventListener('mouseup', function(e){deactivate();});
+  document.addEventListener('mousedown', function(e){activate_enter();});
+  document.addEventListener('mouseup', function(e){deactivate_enter();});
   
-  document.addEventListener('touchstart', function(e){activate();});
-  document.addEventListener('touchend', function(e){deactivate();});
+  document.addEventListener('touchstart', function(e){activate_37();});
+  document.addEventListener('touchend', function(e){deactivate_37();});
  </script>
  <style>
   body{
@@ -39,8 +87,20 @@
 </head>
 
 <body>
- <audio controls loop id="theaudio" style="display:none">
+ <audio controls loop id="fluffy" style="display:none">
   <source src="../audio_tracks/TheOrb_LittleFluffyClouds.mp3" type="audio/mpeg">
+ </audio>
+  <audio controls loop id="turnip" style="display:none">
+  <source src="../audio_tracks/SultansOfPing_TurnipFish.mp3" type="audio/mpeg">
+ </audio>
+  <audio controls loop id="ageis" style="display:none">
+  <source src="../audio_tracks/AphexTwin_Ageispolis.mp3" type="audio/mpeg">
+ </audio>
+  <audio controls loop id="super" style="display:none">
+  <source src="../audio_tracks/OSuperman.wav" type="audio/mpeg">
+ </audio>
+  <audio controls loop id="ruidh" style="display:none">
+  <source src="../audio_tracks/RuidhleMoNigheanDonn_BrighdeChaimbeul.mp3" type="audio/mpeg">
  </audio>
 </body>
 </html>
