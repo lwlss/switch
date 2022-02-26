@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+ <meta charset=utf-8>
+ <title>Switch controlled music & colour|AbleNet Hitch2</title>
+ <meta name="description" content="Control music using AbleNet Hitch2 switch (mode 3: Arrow Keys & Enter), keyboard, mouse or touch screen.  Hold button down to play music, release to pause.">
+ <script>
+ 
+ var pressed_keys = {}; // You could also use an array
+ var colours = {};
+ 
+
+var keys = ["","13", "37", "38", "39", "40", "13_37", "13_38", "13_39", "13_40", 
+"37_38", "37_39", "37_40", "38_39", "38_40", "39_40", "13_37_38", 
+"13_37_39", "13_37_40", "13_38_39", "13_38_40", "13_39_40", "37_38_39", 
+"37_38_40", "37_39_40", "38_39_40"];
+var values = ["black","#FF003D", "#00FFA3", "#5200FF", "#8F00FF", "#FFB800", "#CCFF00", 
+"#00FF66", "#00E0FF", "#52FF00", "#CC00FF", "#8FFF00", "#FF007A", 
+"#FF0000", "#FF3D00", "#0029FF", "#00FFE0", "#FFF500", "#00FF29", 
+"#FF7A00", "#FF00B8", "#14FF00", "#1400FF", "#FF00F5", "#00A3FF", 
+"#0066FF"];
+var colours = {};
+keys.forEach((key, i) => colours[key] = values[i]);
+ 
+ onkeydown = onkeyup = function(e){
+    e = e || event; // to deal with IE
+    if([13,37,38,39,40].includes(e.keyCode)){
+     pressed_keys[e.keyCode] = e.type == 'keydown';
+    }
+
+    const key_ids = Object.keys(pressed_keys);
+    const active_keys = key_ids.filter(function(id) {
+        return pressed_keys[id]
+    }).sort();
+    //console.log(active_keys.join("_"))
+    document.body.style.backgroundColor = colours[active_keys.join("_")]; 
+ }
+ 
+ function activate_enter(){
+  document.getElementById('enter').play();
+  document.body.style.color = "black";
+ }
+ 
+ function deactivate_enter(){
+  document.getElementById('enter').pause();
+  document.body.style.color = "black";
+ }
+ 
+  function activate_left(){
+  document.getElementById('left').play();
+  document.body.style.color = "black";
+ }
+ 
+ function deactivate_left(){
+  document.getElementById('left').pause();
+  document.body.style.color = "black";
+ }
+ 
+  function activate_up(){
+  document.getElementById('up').play();
+  document.body.style.color = "black";
+ }
+ 
+ function deactivate_up(){
+  document.getElementById('up').pause();
+  document.body.style.color = "black";
+ }
+ 
+  function activate_right(){
+  document.getElementById('right').play();
+  document.body.style.color = "black";
+ }
+ 
+ function deactivate_right(){
+  document.getElementById('right').pause();
+  document.body.style.color = "black";
+ }
+ 
+ function activate_down(){
+  document.getElementById('down').play();
+  document.body.style.color = "black";
+ }
+ 
+ function deactivate_down(){
+  document.getElementById('down').pause();
+  document.body.style.color = "black";
+ }
+ 
+  document.addEventListener('keydown', function(e) {
+   if (e.key == ' '|e.key == 'Enter'){activate_enter();}
+   if (e.keyCode == 37){activate_left();}
+   if (e.keyCode == 38){activate_up();}
+   if (e.keyCode == 39){activate_right();}
+   if (e.keyCode == 40){activate_down();}
+  });
+
+  document.addEventListener('keyup', function(e) {
+   if (e.key == ' '|e.key == 'Enter'){deactivate_enter();}
+   if (e.keyCode == 37){deactivate_left();}
+   if (e.keyCode == 38){deactivate_up();}
+   if (e.keyCode == 39){deactivate_right();}
+   if (e.keyCode == 40){deactivate_down();}
+  });
+  
+  document.addEventListener('mousedown', function(e){activate_enter();});
+  document.addEventListener('mouseup', function(e){deactivate_enter();});
+  
+  document.addEventListener('touchstart', function(e){activate_left();});
+  document.addEventListener('touchend', function(e){deactivate_left();});
+ </script>
+ <style>
+  body{
+   background-color: black;
+  }
+ </style>
+ 
+</head>
+
+<body>
+ <audio controls loop id="left" style="display:none">
+  <source src="../audio_tracks/TheOrb_LittleFluffyClouds.mp3" type="audio/mpeg">
+ </audio>
+  <audio controls loop id="up" style="display:none">
+  <source src="../audio_tracks/SultansOfPing_TurnipFish.mp3" type="audio/mpeg">
+ </audio>
+  <audio controls loop id="right" style="display:none">
+  <source src="../audio_tracks/AphexTwin_Ageispolis.mp3" type="audio/mpeg">
+ </audio>
+  <audio controls loop id="down" style="display:none">
+  <source src="../audio_tracks/OSuperman.wav" type="audio/mpeg">
+ </audio>
+  <audio controls loop id="enter" style="display:none">
+  <source src="../audio_tracks/RuidhleMoNigheanDonn_BrighdeChaimbeul.mp3" type="audio/mpeg">
+ </audio>
+</body>
+</html>
+
+
+
+
